@@ -171,7 +171,7 @@
         .btnpg10 {
             align-items: center;
             justify-content: center;
-            background-color: #000;
+            background-image: linear-gradient(150deg, rgba(255,0,0,1) 40%, rgba(255,255,255,1) 100%);
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -184,7 +184,7 @@
         .btnpg11 {
             align-items: center;
             justify-content: center;
-            background-color: #000;
+            background-image: linear-gradient(150deg, rgba(255,102,0,1) 40%, rgba(255,255,255,1) 100%);
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -197,7 +197,7 @@
         .btnpg12 {
             align-items: center;
             justify-content: center;
-            background-color: #000;
+            background-image: linear-gradient(150deg, rgba(255,228,0,1) 55%, rgba(255,255,255,1) 100%);
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -210,7 +210,7 @@
         .btnpg13 {
             align-items: center;
             justify-content: center;
-            background-color: #000;
+            background-image: linear-gradient(150deg, rgba(110,184,0,1) 55%, rgba(255,255,255,1) 100%);
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -223,7 +223,7 @@
         .btnpg14 {
             align-items: center;
             justify-content: center;
-            background-color: #000;
+            background-image: linear-gradient(150deg, rgba(0,89,202,1) 55%, rgba(255,255,255,1) 100%);
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -236,7 +236,7 @@
         .btnpg15 {
             align-items: center;
             justify-content: center;
-            background-color: #000;
+            background-image: linear-gradient(150deg, rgba(106,0,202,1) 55%, rgba(255,255,255,1) 100%);
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -280,7 +280,7 @@
             top: 0;
             text-align: center;
             font-size: 1vw;
-            color: #fff;
+            color: #222;
             margin-top: 30%;
         }
 
