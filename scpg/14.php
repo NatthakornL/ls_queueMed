@@ -65,7 +65,7 @@
         .btnpg1 {
             align-items: center;
             justify-content: center;
-            background-color: #ee34d2;
+            background-image: linear-gradient(150deg, rgba(0,89,202,1) 55%, rgba(255,255,255,1) 100%);
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -94,7 +94,7 @@
             text-align: center;
             justify-content: center;
             font-size: 6vw;
-            color: blue;
+            color: #fff;
             margin-bottom: 5%;
             font-weight: 600;
 
@@ -108,7 +108,7 @@
             align-items: center;
             font-size: 10vw;
             font-weight: 700;
-            color: blue;
+            color: #fff;
             margin-top: 30%;
 
         }

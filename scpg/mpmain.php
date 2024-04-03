@@ -68,7 +68,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #ff355e;
+            background-color: red;
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -79,7 +79,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #fd5b78;
+            background-color: #FF6600;
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -90,7 +90,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #ff6037;
+            background-color: #FFE400;
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -101,7 +101,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #ff9966;
+            background-color: #6EB800;
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -112,7 +112,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #ff9933;
+            background-color: #0059CA;
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -123,7 +123,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #ffcc33;
+            background-color: #6A00CA;
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -134,7 +134,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #ffff66;
+            background-color: #8B5300;
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -145,7 +145,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #ccff00;
+            background-color: #B1B1B1;
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -156,7 +156,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #66ff66;
+            background-color: #FF00FF;
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -167,7 +167,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #aaf0d1;
+            background-image: linear-gradient(150deg, rgba(255,0,0,1) 40%, rgba(255,255,255,1) 100%);
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -178,7 +178,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #16d0cb;
+            background-image: linear-gradient(150deg, rgba(255,102,0,1) 40%, rgba(255,255,255,1) 100%);
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -189,7 +189,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #50bfe6;
+            background-image: linear-gradient(150deg, rgba(255,228,0,1) 55%, rgba(255,255,255,1) 100%);
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -200,7 +200,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #9c27b0;
+            background-image: linear-gradient(150deg, rgba(110,184,0,1) 55%, rgba(255,255,255,1) 100%);
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -211,7 +211,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #ee34d2;
+            background-image: linear-gradient(150deg, rgba(0,89,202,1) 55%, rgba(255,255,255,1) 100%);
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -222,7 +222,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #ff00cc;
+            background-image: linear-gradient(150deg, rgba(106,0,202,1) 55%, rgba(255,255,255,1) 100%);
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -236,7 +236,7 @@
             text-align: center;
             justify-content: center;
             font-size: 4.5vw;
-            color: #000;
+            color: #fff;
         }
 
         /*END box btn queue*/
