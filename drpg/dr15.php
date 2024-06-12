@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
-    <!--<meta http-equiv="refresh" content="2" />-->
+    <meta http-equiv="refresh" content="10" />
     <title>DrMed_Room15</title>
 
     <style type="text/css" media="screen">
@@ -219,18 +219,7 @@
             font-size: 1.3vw;
             color: #fff;
             font-weight: 500;
-
-        }
-
-        .ctn2 {
-            flex-wrap: wrap;
-            width: 100%;
-            text-align: center;
-            justify-content: center;
-            font-size: 1.3vw;
-            color: #fff;
-            font-weight: 500;
-
+            cursor: pointer;
         }
     </style>
 </head>
