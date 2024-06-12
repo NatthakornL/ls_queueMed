@@ -9,7 +9,7 @@ include "connect.php";
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
     <link rel="icon" type="image/x-icon" href="./pic/queue.ico">
     <meta http-equiv="refresh" content="3" />
-    <title>QueueOPDMed ช่อง 3</title>
+    <title>QueueOPDMedDisplay</title>
 
     <style type="text/css" media="screen">
     * {
@@ -58,7 +58,7 @@ include "connect.php";
         width: 100%;
         top: 0;
         text-align: center;
-        font-size: 2vw;
+        font-size: 2.5vw;
         font-weight: 600;
         color: blue;
 
@@ -79,12 +79,14 @@ include "connect.php";
         justify-content: center;
         background-color: red;
         border: 1px solid #000;
-        border-radius: 18px;
+        border-radius: 25px;
         color: black;
-        padding: 10px 10px;
+        padding: 1vh 1vw;
         font-size: 1vw;
         margin-top: 4%;
-        margin-right: 1%;
+        margin-right: 2%;
+        width: 20vw;
+        height: 45vh;
     }
 
     .btnpg2 {
@@ -94,10 +96,12 @@ include "connect.php";
         border: 1px solid #000;
         border-radius: 18px;
         color: black;
-        padding: 10px 10px;
+        padding: 1vh 1vw;
         font-size: 1vw;
         margin-top: 4%;
-        margin-right: 1%;
+        margin-right: 2%;
+        width: 20vw;
+        height: 45vh;
     }
 
     .btnpg3 {
@@ -107,10 +111,12 @@ include "connect.php";
         border: 1px solid #000;
         border-radius: 18px;
         color: black;
-        padding: 10px 10px;
+        padding: 1vh 1vw;
         font-size: 1vw;
         margin-top: 4%;
         margin-right: 1%;
+        width: 20vw;
+        height: 45vh;
     }
 
     .btnpg4 {
@@ -276,7 +282,7 @@ include "connect.php";
         width: 100%;
         text-align: center;
         justify-content: center;
-        font-size: 1.5vw;
+        font-size: 1.7vw;
         color: #fff;
         margin-bottom: 5%;
         font-weight: 600;
@@ -417,7 +423,7 @@ include "connect.php";
 
 <body>
     <form method="post" action="" enctype="multipart/form-data">
-
+        <div class="head">คิวเรียกรับใบนัดหมาย</div>
         <div class="times">
             <?php
             date_default_timezone_set("Asia/Bangkok");
@@ -426,41 +432,39 @@ include "connect.php";
             ?>
         </div>
 
-        <div id="centered">
-            <?php
-            $sql = "SELECT * FROM tb_numq WHERE id ";
-            $result = mysqli_query($connect, $sql) or die(mysqli_error($connect));
-            while ($row = mysqli_fetch_array($result)) { ?>
-            <div class="ct1" id="output-area"><?php echo $row['q_chn3']; ?></div>
-            <?php } ?>
-        </div>
+
         <div id="centered1">
+            <?php
+            $sql = "SELECT * FROM tb_numq WHERE id = '1' ";
+            $result = mysqli_query($connect, $sql) or die(mysqli_error($connect));
+            while ($row = mysqli_fetch_assoc($result)) {
+            ?>
             <div class="btnpg1">
+                <div class="ct">ช่องบริการที่ 1</div>
+                <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
+                <div class="ct1" id="output-area"><?php echo $row['q_chn1']; ?></div>
+
+            </div>
+            <div class="btnpg2">
+                <div class="ct">ช่องบริการที่ 2</div>
+                <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
+                <div class="ct1" id="output-area"><?php echo $row['q_chn2']; ?></div>
+
+            </div>
+            <div class="btnpg3">
                 <div class="ct">ช่องบริการที่ 3</div>
                 <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
+                <div class="ct1" id="output-area"><?php echo $row['q_chn3']; ?></div>
 
-                <div class="ct2">
-                    <!-- Button -->
-
-                    <button type="submit" name="increment3" class="btn"><i class="fa fa-plus-circle"></i></button>
-                    <!-- END Button -->
-                    <?php
-                    if (isset($_POST['increment3'])) {
-                        $up = "UPDATE tb_numq SET q_chn3 = q_chn3 + 1 WHERE id  ";
-                        $up  = mysqli_query($connect, $up) or die(mysqli_error($connect));
-                    }
-
-                    ?>
-                </div>
             </div>
 
         </div>
+        <?php
+                mysqli_close($connect);
+            }
+    ?>
 
 
-        </div><br>
-
-
-        </div>
 
         <div id="bottom1">© CopyRight 2024 | IT Center Lerdsin Hospital</div>
     </form>

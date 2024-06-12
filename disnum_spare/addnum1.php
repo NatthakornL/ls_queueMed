@@ -428,7 +428,7 @@ include "connect.php";
 
         <div id="centered">
             <?php
-            $sql = "SELECT * FROM tb_numq WHERE id ";
+            $sql = "SELECT * FROM tb_numq WHERE id = '2' ";
             $result = mysqli_query($connect, $sql) or die(mysqli_error($connect));
             while ($row = mysqli_fetch_array($result)) { ?>
                 <div class="ct1" id="output-area"><?php echo $row['q_chn1']; ?></div>
@@ -446,7 +446,7 @@ include "connect.php";
                     <!-- END Button -->
                     <?php
                     if (isset($_POST['increment1'])) {
-                        $up = "UPDATE tb_numq SET q_chn1 = q_chn1 + 1 WHERE id ";
+                        $up = "UPDATE tb_numq SET q_chn1 = q_chn1 + 1 WHERE id = '2' ";
                         $up  = mysqli_query($connect, $up) or die(mysqli_error($connect));
                     }
 

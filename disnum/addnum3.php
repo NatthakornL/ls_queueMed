@@ -2,6 +2,8 @@
 <html>
 <?php
 include "connect.php";
+date_default_timezone_set("Asia/Bangkok");
+$chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
 ?>
 
 <head>
@@ -9,7 +11,7 @@ include "connect.php";
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
     <link rel="icon" type="image/x-icon" href="./pic/queue.ico">
     <meta http-equiv="refresh" content="3" />
-    <title>QueueOPDMed ช่อง 2</title>
+    <title>QueueOPDMed ช่อง 3</title>
 
     <style type="text/css" media="screen">
         * {
@@ -428,30 +430,76 @@ include "connect.php";
 
         <div id="centered">
             <?php
-            $sql = "SELECT * FROM tb_numq WHERE id ";
+            $id = 1; // Assuming you're working with a fixed ID for simplicity
+
+            // Check if a record for today's date exists
+            $sql = "SELECT * FROM tb_numq WHERE id = '$id' AND chk_date = '$chkdate'";
+            $result = mysqli_query($connect, $sql);
+
+            if (mysqli_num_rows($result) == 0) {
+                // No record for today, insert a new one
+                $ins = "INSERT INTO tb_numq (id, q_chn1, q_chn2, q_chn3, chk_date) VALUES ('$id', 0, 0, 0, '$chkdate')";
+                mysqli_query($connect, $ins) or die(mysqli_error($connect));
+            }
+
+            // Fetch the record
+            $sql = "SELECT * FROM tb_numq WHERE id = '$id' AND chk_date = '$chkdate'";
             $result = mysqli_query($connect, $sql) or die(mysqli_error($connect));
-            while ($row = mysqli_fetch_array($result)) { ?>
-                <div class="ct1" id="output-area"><?php echo $row['q_chn2']; ?></div>
-            <?php } ?>
+
+            if ($result->num_rows > 0) {
+                // Fetch the row
+                $row = $result->fetch_assoc();
+
+                // Increment each value by 1
+                $q_chn1 = $row['q_chn1'] + 0;
+                $q_chn2 = $row['q_chn2'] + 0;
+                $q_chn3 = $row['q_chn3'] + 1;
+
+                // Ensure values are unique
+                if ($q_chn1 === $q_chn2) {
+                    $q_chn3++;
+                }
+                if ($q_chn1 === $q_chn3) {
+                    $q_chn3++;
+                }
+                if ($q_chn2 === $q_chn1) {
+                    $q_chn3++;
+                }
+                if ($q_chn2 === $q_chn3) {
+                    $q_chn3++;
+                }
+                if ($q_chn3 == $q_chn2) {
+                    $q_chn3++;
+                }
+                if ($q_chn3 == $q_chn1) {
+                    $q_chn3++;
+                }
+                if (isset($_POST['increment3'])) {
+                    // Update the row with new values
+                    $up = "UPDATE tb_numq SET q_chn3 = $q_chn3 WHERE id = '$id' AND chk_date = '$chkdate'";
+                    mysqli_query($connect, $up) or die(mysqli_error($connect));
+
+                    // Refresh the result to fetch updated data
+                    $result = mysqli_query($connect, $sql) or die(mysqli_error($connect));
+                    $row = $result->fetch_assoc(); // Fetch the updated row
+                }
+
+                echo '<div class="ct1" id="output-area">' . $row['q_chn3'] . '</div>';
+            }
+            ?>
+
         </div>
         <div id="centered1">
             <div class="btnpg1">
-                <div class="ct">ช่องบริการที่ 2</div>
+                <div class="ct">ช่องบริการที่ 3</div>
                 <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
 
                 <div class="ct2">
                     <!-- Button -->
 
-                    <button type="submit" name="increment2" class="btn"><i class="fa fa-plus-circle"></i></button>
+                    <button type="submit" name="increment3" class="btn"><i class="fa fa-plus-circle"></i></button>
                     <!-- END Button -->
-                    <?php
-                    if (isset($_POST['increment2'])) {
-                        $up = "UPDATE tb_numq SET q_chn2 = q_chn2 + 1 WHERE id ";
-                        $up  = mysqli_query($connect, $up) or die(mysqli_error($connect));
-                    }
 
-
-                    ?>
                 </div>
             </div>
 
@@ -460,6 +508,8 @@ include "connect.php";
 
         </div><br>
 
+
+        </div>
 
         <div id="bottom1">© CopyRight 2024 | IT Center Lerdsin Hospital</div>
     </form>

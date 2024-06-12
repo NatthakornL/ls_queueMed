@@ -2,6 +2,8 @@
 <html>
 <?php
 include "connect.php";
+date_default_timezone_set("Asia/Bangkok");
+$chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
 ?>
 
 <head>
@@ -428,11 +430,64 @@ include "connect.php";
 
         <div id="centered">
             <?php
-            $sql = "SELECT * FROM tb_numq WHERE id ";
+            $id = 1; // Assuming you're working with a fixed ID for simplicity
+
+            // Check if a record for today's date exists
+            $sql = "SELECT * FROM tb_numq WHERE id = '$id' AND chk_date = '$chkdate'";
+            $result = mysqli_query($connect, $sql);
+
+            if (mysqli_num_rows($result) == 0) {
+                // No record for today, insert a new one
+                $ins = "INSERT INTO tb_numq (id, q_chn1, q_chn2, q_chn3, chk_date) VALUES ('$id', 0, 0, 0, '$chkdate')";
+                mysqli_query($connect, $ins) or die(mysqli_error($connect));
+            }
+
+            // Fetch the record
+            $sql = "SELECT * FROM tb_numq WHERE id = '$id' AND chk_date = '$chkdate'";
             $result = mysqli_query($connect, $sql) or die(mysqli_error($connect));
-            while ($row = mysqli_fetch_array($result)) { ?>
-                <div class="ct1" id="output-area"><?php echo $row['q_chn1']; ?></div>
-            <?php } ?>
+
+            if ($result->num_rows > 0) {
+                // Fetch the row
+                $row = $result->fetch_assoc();
+
+                // Increment each value by 1
+                $q_chn1 = $row['q_chn1'] + 1;
+                $q_chn2 = $row['q_chn2'] + 0;
+                $q_chn3 = $row['q_chn3'] + 0;
+
+                // Ensure values are unique
+                if ($q_chn1 === $q_chn2) {
+                    $q_chn1++;
+                }
+                if ($q_chn1 === $q_chn3) {
+                    $q_chn1++;
+                }
+                if ($q_chn2 === $q_chn1) {
+                    $q_chn1++;
+                }
+                if ($q_chn2 === $q_chn3) {
+                    $q_chn1++;
+                }
+                if ($q_chn3 == $q_chn2) {
+                    $q_chn1++;
+                }
+                if ($q_chn3 == $q_chn1) {
+                    $q_chn1++;
+                }
+                if (isset($_POST['increment1'])) {
+                    // Update the row with new values
+                    $up = "UPDATE tb_numq SET q_chn1 = $q_chn1 WHERE id = '$id' AND chk_date = '$chkdate'";
+                    mysqli_query($connect, $up) or die(mysqli_error($connect));
+
+                    // Refresh the result to fetch updated data
+                    $result = mysqli_query($connect, $sql) or die(mysqli_error($connect));
+                    $row = $result->fetch_assoc(); // Fetch the updated row
+                }
+
+                echo '<div class="ct1" id="output-area">' . $row['q_chn1'] . '</div>';
+            }
+            ?>
+
         </div>
         <div id="centered1">
             <div class="btnpg1">
@@ -441,16 +496,8 @@ include "connect.php";
 
                 <div class="ct2">
                     <!-- Button -->
-
                     <button type="submit" name="increment1" class="btn"><i class="fa fa-plus-circle"></i></button>
                     <!-- END Button -->
-                    <?php
-                    if (isset($_POST['increment1'])) {
-                        $up = "UPDATE tb_numq SET q_chn1 = q_chn1 + 1 WHERE id ";
-                        $up  = mysqli_query($connect, $up) or die(mysqli_error($connect));
-                    }
-
-                    ?>
                 </div>
             </div>
 

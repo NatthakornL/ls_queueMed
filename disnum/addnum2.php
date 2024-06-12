@@ -2,6 +2,8 @@
 <html>
 <?php
 include "connect.php";
+date_default_timezone_set("Asia/Bangkok");
+$chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
 ?>
 
 <head>
@@ -9,7 +11,7 @@ include "connect.php";
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
     <link rel="icon" type="image/x-icon" href="./pic/queue.ico">
     <meta http-equiv="refresh" content="3" />
-    <title>QueueOPDMedDisplay</title>
+    <title>QueueOPDMed ช่อง 2</title>
 
     <style type="text/css" media="screen">
     * {
@@ -79,14 +81,12 @@ include "connect.php";
         justify-content: center;
         background-color: red;
         border: 1px solid #000;
-        border-radius: 25px;
+        border-radius: 18px;
         color: black;
-        padding: 1vh 1vw;
+        padding: 10px 10px;
         font-size: 1vw;
         margin-top: 4%;
-        margin-right: 2%;
-        width: 20vw;
-        height: 45vh;
+        margin-right: 1%;
     }
 
     .btnpg2 {
@@ -96,12 +96,10 @@ include "connect.php";
         border: 1px solid #000;
         border-radius: 18px;
         color: black;
-        padding: 1vh 1vw;
+        padding: 10px 10px;
         font-size: 1vw;
         margin-top: 4%;
-        margin-right: 2%;
-        width: 20vw;
-        height: 45vh;
+        margin-right: 1%;
     }
 
     .btnpg3 {
@@ -111,12 +109,10 @@ include "connect.php";
         border: 1px solid #000;
         border-radius: 18px;
         color: black;
-        padding: 1vh 1vw;
+        padding: 10px 10px;
         font-size: 1vw;
         margin-top: 4%;
         margin-right: 1%;
-        width: 20vw;
-        height: 45vh;
     }
 
     .btnpg4 {
@@ -282,7 +278,7 @@ include "connect.php";
         width: 100%;
         text-align: center;
         justify-content: center;
-        font-size: 1.7vw;
+        font-size: 1.5vw;
         color: #fff;
         margin-bottom: 5%;
         font-weight: 600;
@@ -432,38 +428,86 @@ include "connect.php";
             ?>
         </div>
 
-
-        <div id="centered1">
+        <div id="centered">
             <?php
-            $sql = "SELECT * FROM tb_numq WHERE q_chn1 ";
-            $result = mysqli_query($connect, $sql) or die(mysqli_error($connect));
-            while ($row = mysqli_fetch_assoc($result)) {
-            ?>
-            <div class="btnpg1">
-                <div class="ct">ช่องบริการที่ 1</div>
-                <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="ct1" id="output-area"><?php echo $row['q_chn1']; ?></div>
+            $id = 1; // Assuming you're working with a fixed ID for simplicity
 
-            </div>
-            <div class="btnpg2">
+            // Check if a record for today's date exists
+            $sql = "SELECT * FROM tb_numq WHERE id = '$id' AND chk_date = '$chkdate'";
+            $result = mysqli_query($connect, $sql);
+
+            if (mysqli_num_rows($result) == 0) {
+                // No record for today, insert a new one
+                $ins = "INSERT INTO tb_numq (id, q_chn1, q_chn2, q_chn3, chk_date) VALUES ('$id', 0, 0, 0, '$chkdate')";
+                mysqli_query($connect, $ins) or die(mysqli_error($connect));
+            }
+
+            // Fetch the record
+            $sql = "SELECT * FROM tb_numq WHERE id = '$id' AND chk_date = '$chkdate'";
+            $result = mysqli_query($connect, $sql) or die(mysqli_error($connect));
+
+            if ($result->num_rows > 0) {
+                // Fetch the row
+                $row = $result->fetch_assoc();
+
+                // Increment each value by 1
+                $q_chn1 = $row['q_chn1'] + 0;
+                $q_chn2 = $row['q_chn2'] + 1;
+                $q_chn3 = $row['q_chn3'] + 0;
+
+                // Ensure values are unique
+                if ($q_chn1 === $q_chn3) {
+                    $q_chn2++;
+                }
+                if ($q_chn1 === $q_chn2) {
+                    $q_chn2++;
+                }
+                if ($q_chn2 === $q_chn1) {
+                    $q_chn2++;
+                }
+                if ($q_chn2 === $q_chn3) {
+                    $q_chn2++;
+                }
+                if ($q_chn3 == $q_chn2) {
+                    $q_chn2++;
+                }
+                if ($q_chn3 == $q_chn1) {
+                    $q_chn2++;
+                }
+                if (isset($_POST['increment2'])) {
+                    // Update the row with new values
+                    $up = "UPDATE tb_numq SET q_chn2 = $q_chn2 WHERE id = '$id' AND chk_date = '$chkdate'";
+                    mysqli_query($connect, $up) or die(mysqli_error($connect));
+
+                    // Refresh the result to fetch updated data
+                    $result = mysqli_query($connect, $sql) or die(mysqli_error($connect));
+                    $row = $result->fetch_assoc(); // Fetch the updated row
+                }
+
+                echo '<div class="ct1" id="output-area">' . $row['q_chn2'] . '</div>';
+            }
+            ?>
+        </div>
+        <div id="centered1">
+            <div class="btnpg1">
                 <div class="ct">ช่องบริการที่ 2</div>
                 <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="ct1" id="output-area"><?php echo $row['q_chn2']; ?></div>
 
-            </div>
-            <div class="btnpg3">
-                <div class="ct">ช่องบริการที่ 3</div>
-                <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="ct1" id="output-area"><?php echo $row['q_chn3']; ?></div>
+                <div class="ct2">
+                    <!-- Button -->
 
+                    <button type="submit" name="increment2" class="btn"><i class="fa fa-plus-circle"></i></button>
+                    <!-- END Button -->
+
+
+
+                </div>
             </div>
 
         </div>
-        <?php
-                mysqli_close($connect);
-            }
-    ?>
 
+
+        </div><br>
 
 
         <div id="bottom1">© CopyRight 2024 | IT Center Lerdsin Hospital</div>
