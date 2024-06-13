@@ -32,7 +32,7 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
 
         body {
             color: white;
-            background-color: #F2FFE3;
+            background-color: oldlace;
             font-family: sans-serif;
             margin: 0px
         }
@@ -52,7 +52,7 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
             justify-content: center;
             flex-grow: 1;
             overflow-y: auto;
-            margin-top: 5%;
+
         }
 
         .head {
@@ -79,7 +79,7 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
         .btnpg1 {
             align-items: center;
             justify-content: center;
-            background-color: red;
+            background-color: mediumseagreen;
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
@@ -87,6 +87,8 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
             font-size: 1vw;
             margin-top: 4%;
             margin-right: 1%;
+            width: 30vw;
+            height: 50vh;
         }
 
         .btnpg2 {
@@ -294,9 +296,9 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
             align-items: center;
             font-size: 7vw;
             font-weight: 700;
-            color: #fff;
-            margin-top: 30%;
-            margin-bottom: 30%;
+            color: white;
+            margin-top: 10%;
+            margin-bottom: 10%;
             text-shadow: 0 0 30px #000;
 
         }
@@ -315,7 +317,7 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
 
         /* Style buttons */
         .btn {
-            background-color: DodgerBlue;
+            background-color: darkgreen;
             /* Blue background */
             border: none;
             /* Remove borders */
@@ -338,7 +340,7 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
 
         /* Darker background on mouse-over */
         .btn:hover {
-            background-color: RoyalBlue;
+            background-color: darkolivegreen;
         }
 
         a {
@@ -456,16 +458,16 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
                 $q_chn3 = $row['q_chn3'] + 0;
 
                 // Ensure values are unique
-                if ($q_chn1 === $q_chn2) {
+                if ($q_chn1 == $q_chn2) {
                     $q_chn1++;
                 }
-                if ($q_chn1 === $q_chn3) {
+                if ($q_chn1 == $q_chn3) {
                     $q_chn1++;
                 }
-                if ($q_chn2 === $q_chn1) {
+                if ($q_chn2 == $q_chn1) {
                     $q_chn1++;
                 }
-                if ($q_chn2 === $q_chn3) {
+                if ($q_chn2 == $q_chn3) {
                     $q_chn1++;
                 }
                 if ($q_chn3 == $q_chn2) {
@@ -474,6 +476,7 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
                 if ($q_chn3 == $q_chn1) {
                     $q_chn1++;
                 }
+
                 if (isset($_POST['increment1'])) {
                     // Update the row with new values
                     $up = "UPDATE tb_numq SET q_chn1 = $q_chn1 WHERE id = '$id' AND chk_date = '$chkdate'";
@@ -483,8 +486,6 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
                     $result = mysqli_query($connect, $sql) or die(mysqli_error($connect));
                     $row = $result->fetch_assoc(); // Fetch the updated row
                 }
-
-                echo '<div class="ct1" id="output-area">' . $row['q_chn1'] . '</div>';
             }
             ?>
 
@@ -493,7 +494,7 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
             <div class="btnpg1">
                 <div class="ct">ช่องบริการที่ 1</div>
                 <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-
+                <?php echo '<div class="ct1" id="output-area">' . $row['q_chn1'] . '</div>'; ?>
                 <div class="ct2">
                     <!-- Button -->
                     <button type="submit" name="increment1" class="btn"><i class="fa fa-plus-circle"></i></button>
@@ -515,3 +516,25 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
 </body>
 
 </html>
+<!--
+    // Ensure values are unique
+                if ($q_chn1 == $q_chn2) {
+                    $q_chn1++;
+                }
+                if ($q_chn1 == $q_chn3) {
+                    $q_chn1++;
+                }
+if ($q_chn2 === $q_chn1) {
+                    $q_chn1++;
+                }
+                if ($q_chn2 === $q_chn3) {
+                    $q_chn1++;
+                }
+                if ($q_chn3 == $q_chn2) {
+                    $q_chn1++;
+                }
+                if ($q_chn3 == $q_chn1) {
+                    $q_chn1++;
+                }
+
+-->
