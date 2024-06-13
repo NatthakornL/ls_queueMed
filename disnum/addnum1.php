@@ -432,10 +432,10 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
 
         <div id="centered">
             <?php
-            $id = 1; // Assuming you're working with a fixed ID for simplicity
+
 
             // Check if a record for today's date exists
-            $sql = "SELECT * FROM tb_numq WHERE id = '$id' AND chk_date = '$chkdate'";
+            $sql = "SELECT * FROM tb_numq WHERE chk_date = '$chkdate'";
             $result = mysqli_query($connect, $sql);
 
             if (mysqli_num_rows($result) == 0) {
@@ -445,7 +445,7 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
             }
 
             // Fetch the record
-            $sql = "SELECT * FROM tb_numq WHERE id = '$id' AND chk_date = '$chkdate'";
+            $sql = "SELECT * FROM tb_numq WHERE chk_date = '$chkdate'";
             $result = mysqli_query($connect, $sql) or die(mysqli_error($connect));
 
             if ($result->num_rows > 0) {
@@ -457,29 +457,19 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
                 $q_chn2 = $row['q_chn2'] + 0;
                 $q_chn3 = $row['q_chn3'] + 0;
 
-                // Ensure values are unique
-                if ($q_chn1 == $q_chn2) {
-                    $q_chn1++;
-                }
-                if ($q_chn1 == $q_chn3) {
-                    $q_chn1++;
-                }
-                if ($q_chn2 == $q_chn1) {
-                    $q_chn1++;
-                }
-                if ($q_chn2 == $q_chn3) {
-                    $q_chn1++;
-                }
-                if ($q_chn3 == $q_chn2) {
-                    $q_chn1++;
-                }
-                if ($q_chn3 == $q_chn1) {
-                    $q_chn1++;
+                if ($q_chn2 > $q_chn3) {
+                    if ($q_chn1 <= $q_chn2) {
+                        $q_chn1 = $q_chn2 + 1;
+                    }
+                } else {
+                    if ($q_chn1 <= $q_chn3) {
+                        $q_chn1 = $q_chn3 + 1;
+                    }
                 }
 
                 if (isset($_POST['increment1'])) {
                     // Update the row with new values
-                    $up = "UPDATE tb_numq SET q_chn1 = $q_chn1 WHERE id = '$id' AND chk_date = '$chkdate'";
+                    $up = "UPDATE tb_numq SET q_chn1 = $q_chn1 WHERE  chk_date = '$chkdate'";
                     mysqli_query($connect, $up) or die(mysqli_error($connect));
 
                     // Refresh the result to fetch updated data
