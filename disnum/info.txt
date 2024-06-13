@@ -1,0 +1,11 @@
+change name to use in server 
+
+lerdsin.go.th/queueMedDoc/
+
+==== display ====
+lerdsin.go.th/queueMedDoc/1.php
+
+==== Control ====
+lerdsin.go.th/queueMedDoc/chn1.php
+lerdsin.go.th/queueMedDoc/chn2.php
+lerdsin.go.th/queueMedDoc/chn3.php
