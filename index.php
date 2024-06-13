@@ -2,9 +2,9 @@
 <html>
 
 <?php
-session_start();
-
-
+include "connect.php";
+date_default_timezone_set("Asia/Bangkok");
+$chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
 ?>
 
 <head>
@@ -67,7 +67,7 @@ session_start();
             font-size: 2vw;
             font-weight: 600;
             color: blue;
-
+            margin-top: 2vh;
         }
 
         .times {
@@ -77,19 +77,23 @@ session_start();
             text-align: center;
             font-size: 1vw;
             color: #555;
+            margin-bottom: 2vh;
         }
 
         /* box btn queue */
         .btnpg1 {
+            text-align: center;
             align-items: center;
             justify-content: center;
             background-color: red;
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
-            padding: 22px 32px;
             font-size: 1vw;
             margin-right: 1%;
+            width: 14vw;
+            height: 30vh;
+            padding: 20px 20px;
         }
 
         .btnpg2 {
@@ -104,21 +108,10 @@ session_start();
             margin-right: 1%;
             width: 14vw;
             height: 30vh;
-            padding: 22px 32px;
+            padding: 20px 20px;
         }
 
-        .bg2 {
-            align-items: center;
-            justify-content: center;
-            background-color: #B1B1B1;
-            border: 1px solid #000;
-            border-radius: 18px;
-            color: black;
-            font-size: 1vw;
-            margin-top: 5%;
-            width: 14vw;
-            height: 6vh;
-        }
+
 
         .btnpg3 {
             align-items: center;
@@ -127,10 +120,11 @@ session_start();
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
-            padding: 22px 32px;
             font-size: 1vw;
-            margin-top: 5%;
-            margin-right: 2%;
+            margin-right: 1%;
+            width: 14vw;
+            height: 30vh;
+            padding: 20px 20px;
         }
 
         .btnpg4 {
@@ -140,10 +134,11 @@ session_start();
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
-            padding: 22px 32px;
             font-size: 1vw;
-            margin-top: 5%;
-            margin-right: 2%;
+            margin-right: 1%;
+            width: 14vw;
+            height: 30vh;
+            padding: 20px 20px;
         }
 
         .btnpg5 {
@@ -153,10 +148,11 @@ session_start();
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
-            padding: 22px 32px;
             font-size: 1vw;
-            margin-top: 5%;
-            margin-right: 2%;
+            margin-right: 1%;
+            width: 14vw;
+            height: 30vh;
+            padding: 20px 20px;
         }
 
         .btnpg6 {
@@ -166,10 +162,11 @@ session_start();
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
-            padding: 22px 32px;
             font-size: 1vw;
-            margin-top: 5%;
-            margin-right: 2%;
+            margin-right: 1%;
+            width: 14vw;
+            height: 30vh;
+            padding: 20px 20px;
         }
 
         .btnpg7 {
@@ -179,10 +176,11 @@ session_start();
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
-            padding: 22px 32px;
             font-size: 1vw;
-            margin-top: 2%;
-            margin-right: 2%;
+            margin-right: 1%;
+            width: 14vw;
+            height: 30vh;
+            padding: 20px 20px;
         }
 
         .btnpg8 {
@@ -192,10 +190,11 @@ session_start();
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
-            padding: 22px 32px;
             font-size: 1vw;
-            margin-top: 2%;
-            margin-right: 2%;
+            margin-right: 1%;
+            width: 14vw;
+            height: 30vh;
+            padding: 20px 20px;
         }
 
         .btnpg9 {
@@ -205,10 +204,11 @@ session_start();
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
-            padding: 22px 32px;
             font-size: 1vw;
-            margin-top: 2%;
-            margin-right: 2%;
+            margin-right: 1%;
+            width: 14vw;
+            height: 30vh;
+            padding: 20px 20px;
         }
 
         .btnpg10 {
@@ -218,10 +218,11 @@ session_start();
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
-            padding: 22px 32px;
             font-size: 1vw;
-            margin-top: 2%;
-            margin-right: 2%;
+            margin-right: 1%;
+            width: 14vw;
+            height: 30vh;
+            padding: 20px 20px;
         }
 
         .btnpg11 {
@@ -231,10 +232,11 @@ session_start();
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
-            padding: 22px 32px;
             font-size: 1vw;
-            margin-top: 2%;
-            margin-right: 2%;
+            margin-right: 1%;
+            width: 14vw;
+            height: 30vh;
+            padding: 20px 20px;
         }
 
         .btnpg12 {
@@ -244,10 +246,11 @@ session_start();
             border: 1px solid #000;
             border-radius: 18px;
             color: black;
-            padding: 22px 32px;
             font-size: 1vw;
-            margin-top: 2%;
-            margin-right: 2%;
+            margin-right: 1%;
+            width: 14vw;
+            height: 30vh;
+            padding: 20px 20px;
         }
 
         .btnpg13 {
@@ -299,15 +302,16 @@ session_start();
             color: black;
             padding: 30px 30px;
             font-size: 1vw;
-            margin-top: 3%;
+            margin-top: 1%;
             margin-right: 2%;
+
         }
 
         /*END box btn queue*/
 
         .counter {
 
-            width: 13vw;
+            width: 14vw;
             align-items: center;
             text-align: center;
             justify-content: center;
@@ -316,7 +320,7 @@ session_start();
             margin-bottom: 5%;
             font-weight: 600;
             text-shadow: 0 0 10px #0080FF;
-            background-color: #0080FF;
+
         }
 
         .counter1 {
@@ -325,7 +329,7 @@ session_start();
             text-align: center;
             justify-content: center;
             align-items: center;
-            font-size: 3vw;
+            font-size: 4vw;
             font-weight: 700;
             color: white;
             margin-top: 30%;
@@ -433,85 +437,95 @@ session_start();
         ?>
     </div>
     <form method="get" action="" enctype="multipart/form-data">
-        <div id="centered" style="background-color: #555;">
-            <div class="btnpg1">
-                <div class="counter">ห้องตรวจ 1</div>
-                <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="counter1"><?php echo $_SESSION['counter']; ?></div>
-                <div class="bg2">เชิญรอหน้าห้องตรวจ</div>
-            </div>
-            <div class="btnpg2">
-                <div class="counter">ห้องตรวจ 2</div>
-                <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="counter1"><?php echo $_SESSION['counter1']; ?></div>
-                <div class="bg2">เชิญรอหน้าห้องตรวจ</div>
-            </div>
-            <div class="btnpg3">
-                <div class="counter">ห้องตรวจ 3</div>
-                <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="counter1"><?php echo $_SESSION['counter2']; ?></div>
-                <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
-            </div>
-            <div class="btnpg4">
-                <div class="counter">ห้องตรวจ 4</div>
-                <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="counter1"><?php echo $_SESSION['counter3']; ?></div>
-                <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
-            </div>
-            <div class="btnpg5">
-                <div class="counter">ห้องตรวจ 5</div>
-                <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="counter1"><?php echo $_SESSION['counter4']; ?></div>
-                <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
-            </div>
-            <div class="btnpg6">
-                <div class="counter">ห้องตรวจ 6</div>
-                <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="counter1"><?php echo $_SESSION['counter5']; ?></div>
-                <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
-            </div>
+        <div id="centered">
+            <?php
 
-        </div>
+            $sql = "SELECT * FROM tb_queue WHERE chk_date = '$chkdate' ";
+            $result = mysqli_query($connect, $sql) or die(mysqli_error($connect));
+            while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                <div class="btnpg1">
+                    <div class="counter">ห้องตรวจ 1</div>
+                    <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
+                    <div class="counter1"><?php echo $row['q_r1']; ?></div>
+                    <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
+                </div>
+                <div class="btnpg2">
+                    <div class="counter">ห้องตรวจ 2</div>
+                    <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
+                    <div class="counter1"><?php echo $row['q_r2']; ?></div>
+                    <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
+                </div>
+                <div class="btnpg3">
+                    <div class="counter">ห้องตรวจ 3</div>
+                    <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
+                    <div class="counter1"><?php echo $row['q_r3']; ?></div>
+                    <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
+                </div>
+                <div class="btnpg4">
+                    <div class="counter">ห้องตรวจ 4</div>
+                    <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
+                    <div class="counter1"><?php echo $row['q_r4']; ?></div>
+                    <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
+                </div>
+                <div class="btnpg5">
+                    <div class="counter">ห้องตรวจ 5</div>
+                    <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
+                    <div class="counter1"><?php echo $row['q_r5']; ?></div>
+                    <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
+                </div>
+                <div class="btnpg6">
+                    <div class="counter">ห้องตรวจ 6</div>
+                    <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
+                    <div class="counter1"><?php echo $row['q_r6']; ?></div>
+                    <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
+                </div>
+
+        </div><br>
 
         <div id="centered">
             <div class="btnpg7">
                 <div class="counter">ห้องตรวจ 7</div>
                 <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="counter1"><?php echo $_SESSION['counter6']; ?></div>
+                <div class="counter1"><?php echo $row['q_r7']; ?></div>
                 <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
             </div>
             <div class="btnpg8">
                 <div class="counter">ห้องตรวจ 8</div>
                 <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="counter1"><?php echo $_SESSION['counter7']; ?></div>
+                <div class="counter1"><?php echo $row['q_r8']; ?></div>
                 <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
             </div>
             <div class="btnpg9">
                 <div class="counter">ห้องตรวจ 9</div>
                 <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="counter1"><?php echo $_SESSION['counter8']; ?></div>
+                <div class="counter1"><?php echo $row['q_r9']; ?></div>
                 <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
             </div>
             <div class="btnpg10">
                 <div class="counter">ห้องตรวจ 10</div>
                 <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="counter1"><?php echo $_SESSION['counter9']; ?></div>
+                <div class="counter1"><?php echo $row['q_r10']; ?></div>
                 <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
             </div>
             <div class="btnpg11">
                 <div class="counter">ห้องตรวจ 11</div>
                 <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="counter1"><?php echo $_SESSION['counter10']; ?></div>
+                <div class="counter1"><?php echo $row['q_r11']; ?></div>
                 <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
             </div>
             <div class="btnpg12">
                 <div class="counter">ห้องตรวจ 12</div>
                 <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="counter1"><?php echo $_SESSION['counter11']; ?></div>
+                <div class="counter1"><?php echo $row['q_r12']; ?></div>
                 <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
             </div>
 
         </div>
+    <?php
+                mysqli_close($connect);
+            }
+    ?>
     </form>
     <div id="centered1">
         <div class="btnpgqr">

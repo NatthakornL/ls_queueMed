@@ -11,7 +11,7 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
     <link rel="icon" type="image/x-icon" href="./pic/queue.ico">
     <meta http-equiv="refresh" content="3" />
-    <title>QueueOPDMed ช่อง 3</title>
+    <title>QueueOPDMed ช่อง 2</title>
 
     <style type="text/css" media="screen">
     * {
@@ -79,7 +79,7 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
     .btnpg1 {
         align-items: center;
         justify-content: center;
-        background-color: mediumseagreen;
+        background-color: deeppink;
         border: 1px solid #000;
         border-radius: 18px;
         color: black;
@@ -87,8 +87,8 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
         font-size: 1vw;
         margin-top: 4%;
         margin-right: 1%;
-        width: 30vw;
-        height: 50vh;
+        width: 40vw;
+        height: auto;
     }
 
     .btnpg2 {
@@ -280,7 +280,7 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
         width: 100%;
         text-align: center;
         justify-content: center;
-        font-size: 1.5vw;
+        font-size: 2vw;
         color: #fff;
         margin-bottom: 5%;
         font-weight: 600;
@@ -433,17 +433,17 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
         <div id="centered">
             <?php
             // Check if a record for today's date exists
-            $sql = "SELECT * FROM tb_numq WHERE chk_date = '$chkdate'";
+            $sql = "SELECT * FROM queueMedDoc WHERE chk_date = '$chkdate'";
             $result = mysqli_query($connect, $sql);
 
             if (mysqli_num_rows($result) == 0) {
                 // No record for today, insert a new one
-                $ins = "INSERT INTO tb_numq (id, q_sum, q_chn1, q_chn2, q_chn3, chk_date) VALUES ('$id', 0, 0, 0, 0, '$chkdate')";
+                $ins = "INSERT INTO queueMedDoc (id, q_chn1, q_chn2, q_chn3, chk_date) VALUES ('$id', 0, 0, 0, '$chkdate')";
                 mysqli_query($connect, $ins) or die(mysqli_error($connect));
             }
 
             // Fetch the record
-            $sql = "SELECT * FROM tb_numq WHERE chk_date = '$chkdate' limit 1";
+            $sql = "SELECT * FROM queueMedDoc WHERE chk_date = '$chkdate'";
             $result = mysqli_query($connect, $sql) or die(mysqli_error($connect));
 
             if ($result->num_rows > 0) {
@@ -452,22 +452,22 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
 
                 // Increment each value by 1
                 $q_chn1 = $row['q_chn1'] + 0;
-                $q_chn2 = $row['q_chn2'] + 0;
-                $q_chn3 = $row['q_chn3'] + 1;
+                $q_chn2 = $row['q_chn2'] + 1;
+                $q_chn3 = $row['q_chn3'] + 0;
 
-                if ($q_chn1 > $q_chn2) {
-                    if ($q_chn3 <= $q_chn1) {
-                        $q_chn3 = $q_chn1 + 1;
+                if ($q_chn1 > $q_chn3) {
+                    if ($q_chn2 <= $q_chn1) {
+                        $q_chn2 = $q_chn1 + 1;
                     }
                 } else {
-                    if ($q_chn3 <= $q_chn2) {
-                        $q_chn3 = $q_chn2 + 1;
+                    if ($q_chn2 <= $q_chn3) {
+                        $q_chn2 = $q_chn3 + 1;
                     }
                 }
 
-                if (isset($_POST['increment3'])) {
+                if (isset($_POST['increment2'])) {
                     // Update the row with new values
-                    $up = "UPDATE tb_numq SET q_chn3 = $q_chn3 WHERE chk_date = '$chkdate'";
+                    $up = "UPDATE queueMedDoc SET q_chn2 = $q_chn2 WHERE chk_date = '$chkdate'";
                     mysqli_query($connect, $up) or die(mysqli_error($connect));
 
                     // Refresh the result to fetch updated data
@@ -476,18 +476,19 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
                 }
             }
             ?>
-
         </div>
         <div id="centered1">
             <div class="btnpg1">
-                <div class="ct">ช่องบริการที่ 3</div>
+                <div class="ct">ช่องบริการที่ 2</div>
                 <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <?php echo '<div class="ct1" id="output-area">' . $row['q_chn3'] . '</div>'; ?>
+                <?php echo '<div class="ct1" id="output-area">' . $row['q_chn2'] . '</div>'; ?>
                 <div class="ct2">
                     <!-- Button -->
 
-                    <button type="submit" name="increment3" class="btn"><i class="fa fa-plus-circle"></i></button>
+                    <button type="submit" name="increment2" class="btn"><i class="fa fa-plus-circle"></i></button>
                     <!-- END Button -->
+
+
 
                 </div>
             </div>
@@ -498,8 +499,6 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
         </div><br>
 
 
-        </div>
-
         <div id="bottom1">© CopyRight 2024 | IT Center Lerdsin Hospital</div>
     </form>
 
@@ -507,18 +506,19 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
 
 </html>
 <!--
-    // Ensure values are unique
 
-                if ($q_chn3 == $q_chn2) {
-                    $q_chn3++;
-                }
-                if ($q_chn3 == $q_chn1) {
-                    $q_chn3++;
+// Ensure values are unique
+
+                if ($q_chn2 == $q_chn1) {
+                    $q_chn2++;
                 }
                 if ($q_chn2 == $q_chn3) {
-                    $q_chn3++;
+                    $q_chn2++;
                 }
-                if ($q_chn1 == $q_chn3) {
-                    $q_chn3++;
+                if ($q_chn1 == $q_chn2) {
+                    $q_chn2++;
+                }
+                if ($q_chn3 == $q_chn2) {
+                    $q_chn2++;
                 }
 -->

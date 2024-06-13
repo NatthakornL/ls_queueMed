@@ -63,6 +63,7 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
         font-size: 3.5vw;
         font-weight: 600;
         color: royalblue;
+        margin-top: 4vh;
 
     }
 
@@ -79,46 +80,46 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
     .btnpg1 {
         align-items: center;
         justify-content: center;
-        background-color: seagreen;
-        border: 1px solid #000;
+        background: linear-gradient(164deg, rgba(255, 0, 181, 1) 4%, rgba(255, 120, 195, 1) 65%);
+        border: 0.2vw solid magenta;
         border-radius: 25px;
         color: black;
         padding: 1vh 1vw;
         font-size: 1vw;
-        margin-top: 4%;
+        margin-top: 2%;
         margin-right: 2%;
-        width: 22vw;
-        height: 45vh;
+        width: 26vw;
+        height: 60vh;
     }
 
     .btnpg2 {
         align-items: center;
         justify-content: center;
-        background-color: seagreen;
-        border: 1px solid #000;
+        background: linear-gradient(164deg, rgba(255, 0, 181, 1) 4%, rgba(255, 120, 195, 1) 65%);
+        border: 0.2vw solid magenta;
         border-radius: 18px;
         color: black;
         padding: 1vh 1vw;
         font-size: 1vw;
-        margin-top: 4%;
+        margin-top: 2%;
         margin-right: 2%;
-        width: 22vw;
-        height: 45vh;
+        width: 26vw;
+        height: 60vh;
     }
 
     .btnpg3 {
         align-items: center;
         justify-content: center;
-        background-color: seagreen;
-        border: 1px solid #000;
+        background: linear-gradient(164deg, rgba(255, 0, 181, 1) 4%, rgba(255, 120, 195, 1) 65%);
+        border: 0.2vw solid magenta;
         border-radius: 18px;
         color: black;
         padding: 1vh 1vw;
         font-size: 1vw;
-        margin-top: 4%;
+        margin-top: 2%;
         margin-right: 1%;
-        width: 22vw;
-        height: 45vh;
+        width: 26vw;
+        height: 60vh;
     }
 
     .btnpg4 {
@@ -284,7 +285,7 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
         width: 100%;
         text-align: center;
         justify-content: center;
-        font-size: 4vw;
+        font-size: 5vw;
         color: #fff;
         margin-bottom: 5%;
         font-weight: 600;
@@ -298,7 +299,7 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
         text-align: center;
         justify-content: center;
         align-items: center;
-        font-size: 6vw;
+        font-size: 12vw;
         font-weight: 700;
         color: #fff;
         margin-top: 26%;
@@ -421,6 +422,9 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
     }
     </style>
 
+
+
+
 </head>
 
 <body>
@@ -437,9 +441,8 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
 
         <div id="centered1">
             <?php
-            $id = null;
 
-            $sql = "SELECT * FROM tb_numq WHERE chk_date = '$chkdate' limit 1";
+            $sql = "SELECT * FROM queueMedDoc WHERE chk_date = '$chkdate' ";
             $result = mysqli_query($connect, $sql) or die(mysqli_error($connect));
             while ($row = mysqli_fetch_assoc($result)) {
             ?>
