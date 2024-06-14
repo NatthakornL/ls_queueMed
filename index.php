@@ -11,420 +11,10 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
     <meta http-equiv="refresh" content="3" />
     <link rel="icon" type="image/x-icon" href="./pic/queue.ico">
+    <link rel="stylesheet" href="style.css" />
     <title>QueueOPD-Med</title>
 
-    <style type="text/css" media="screen">
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
 
-
-        body {
-            color: white;
-            background-color: #F2FFE3;
-            font-family: sans-serif;
-            margin: 0px
-        }
-
-        #centered {
-            display: flex;
-            text-align: center;
-            align-items: center;
-            justify-content: center;
-            flex-grow: 1;
-            overflow-y: auto;
-        }
-
-        #centered1 {
-            display: flex;
-            align-items: right;
-            justify-content: right;
-            flex-grow: 1;
-            overflow-y: auto;
-        }
-
-        .pg1 {
-            flex-wrap: wrap;
-            width: 300px;
-            height: 300px;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
-            font-weight: 700;
-            color: white;
-            background-color: #555;
-
-        }
-
-        .head {
-            flex-wrap: wrap;
-            width: 100%;
-            top: 0;
-            text-align: center;
-            font-size: 2vw;
-            font-weight: 600;
-            color: blue;
-            margin-top: 2vh;
-        }
-
-        .times {
-            flex-wrap: wrap;
-            width: 100%;
-            top: 3%;
-            text-align: center;
-            font-size: 1vw;
-            color: #555;
-            margin-bottom: 2vh;
-        }
-
-        /* box btn queue */
-        .btnpg1 {
-            text-align: center;
-            align-items: center;
-            justify-content: center;
-            background-color: red;
-            border: 1px solid #000;
-            border-radius: 18px;
-            color: black;
-            font-size: 1vw;
-            margin-right: 1%;
-            width: 14vw;
-            height: 30vh;
-            padding: 20px 20px;
-        }
-
-        .btnpg2 {
-            text-align: center;
-            align-items: center;
-            justify-content: center;
-            background-color: #FF6600;
-            border: 1px solid #000;
-            border-radius: 18px;
-            color: black;
-            font-size: 1vw;
-            margin-right: 1%;
-            width: 14vw;
-            height: 30vh;
-            padding: 20px 20px;
-        }
-
-
-
-        .btnpg3 {
-            align-items: center;
-            justify-content: center;
-            background-color: #FFE400;
-            border: 1px solid #000;
-            border-radius: 18px;
-            color: black;
-            font-size: 1vw;
-            margin-right: 1%;
-            width: 14vw;
-            height: 30vh;
-            padding: 20px 20px;
-        }
-
-        .btnpg4 {
-            align-items: center;
-            justify-content: center;
-            background-color: #6EB800;
-            border: 1px solid #000;
-            border-radius: 18px;
-            color: black;
-            font-size: 1vw;
-            margin-right: 1%;
-            width: 14vw;
-            height: 30vh;
-            padding: 20px 20px;
-        }
-
-        .btnpg5 {
-            align-items: center;
-            justify-content: center;
-            background-color: #0059CA;
-            border: 1px solid #000;
-            border-radius: 18px;
-            color: black;
-            font-size: 1vw;
-            margin-right: 1%;
-            width: 14vw;
-            height: 30vh;
-            padding: 20px 20px;
-        }
-
-        .btnpg6 {
-            align-items: center;
-            justify-content: center;
-            background-color: #6A00CA;
-            border: 1px solid #000;
-            border-radius: 18px;
-            color: black;
-            font-size: 1vw;
-            margin-right: 1%;
-            width: 14vw;
-            height: 30vh;
-            padding: 20px 20px;
-        }
-
-        .btnpg7 {
-            align-items: center;
-            justify-content: center;
-            background-color: #8B5300;
-            border: 1px solid #000;
-            border-radius: 18px;
-            color: black;
-            font-size: 1vw;
-            margin-right: 1%;
-            width: 14vw;
-            height: 30vh;
-            padding: 20px 20px;
-        }
-
-        .btnpg8 {
-            align-items: center;
-            justify-content: center;
-            background-color: #B1B1B1;
-            border: 1px solid #000;
-            border-radius: 18px;
-            color: black;
-            font-size: 1vw;
-            margin-right: 1%;
-            width: 14vw;
-            height: 30vh;
-            padding: 20px 20px;
-        }
-
-        .btnpg9 {
-            align-items: center;
-            justify-content: center;
-            background-color: #FF00FF;
-            border: 1px solid #000;
-            border-radius: 18px;
-            color: black;
-            font-size: 1vw;
-            margin-right: 1%;
-            width: 14vw;
-            height: 30vh;
-            padding: 20px 20px;
-        }
-
-        .btnpg10 {
-            align-items: center;
-            justify-content: center;
-            background-image: linear-gradient(120deg, rgba(255, 0, 0, 1) 60%, rgba(255, 255, 255, 1) 50%);
-            border: 1px solid #000;
-            border-radius: 18px;
-            color: black;
-            font-size: 1vw;
-            margin-right: 1%;
-            width: 14vw;
-            height: 30vh;
-            padding: 20px 20px;
-        }
-
-        .btnpg11 {
-            align-items: center;
-            justify-content: center;
-            background-image: linear-gradient(120deg, rgba(255, 102, 0, 1) 60%, rgba(255, 255, 255, 1) 50%);
-            border: 1px solid #000;
-            border-radius: 18px;
-            color: black;
-            font-size: 1vw;
-            margin-right: 1%;
-            width: 14vw;
-            height: 30vh;
-            padding: 20px 20px;
-        }
-
-        .btnpg12 {
-            align-items: center;
-            justify-content: center;
-            background-image: linear-gradient(120deg, rgba(255, 228, 0, 1) 60%, rgba(255, 255, 255, 1) 50%);
-            border: 1px solid #000;
-            border-radius: 18px;
-            color: black;
-            font-size: 1vw;
-            margin-right: 1%;
-            width: 14vw;
-            height: 30vh;
-            padding: 20px 20px;
-        }
-
-        .btnpg13 {
-            align-items: center;
-            justify-content: center;
-            background-image: linear-gradient(150deg, rgba(110, 184, 0, 1) 55%, rgba(255, 255, 255, 1) 100%);
-            border: 1px solid #000;
-            border-radius: 18px;
-            color: black;
-            padding: 10px 8px;
-            font-size: 1vw;
-            margin-top: 1%;
-            margin-right: 1%;
-        }
-
-        .btnpg14 {
-            align-items: center;
-            justify-content: center;
-            background-image: linear-gradient(150deg, rgba(0, 89, 202, 1) 55%, rgba(255, 255, 255, 1) 100%);
-            border: 1px solid #000;
-            border-radius: 18px;
-            color: black;
-            padding: 10px 8px;
-            font-size: 1vw;
-            margin-top: 1%;
-            margin-right: 1%;
-        }
-
-        .btnpg15 {
-            align-items: center;
-            justify-content: center;
-            background-image: linear-gradient(150deg, rgba(106, 0, 202, 1) 55%, rgba(255, 255, 255, 1) 100%);
-            border: 1px solid #000;
-            border-radius: 18px;
-            color: black;
-            padding: 10px 8px;
-            font-size: 1vw;
-            margin-top: 1%;
-            margin-right: 1%;
-        }
-
-        .btnpgqr {
-            align-items: center;
-            justify-content: center;
-            display: grid;
-            background-color: #FF00FF;
-            border: 1px solid #000;
-            border-radius: 18px;
-            color: black;
-            padding: 30px 30px;
-            font-size: 1vw;
-            margin-top: 1%;
-            margin-right: 2%;
-
-        }
-
-        /*END box btn queue*/
-
-        .counter {
-
-            width: 14vw;
-            align-items: center;
-            text-align: center;
-            justify-content: center;
-            font-size: 1.7vw;
-            color: white;
-            margin-bottom: 5%;
-            font-weight: 600;
-            text-shadow: 0 0 10px #0080FF;
-
-        }
-
-        .counter1 {
-            flex-wrap: wrap;
-            width: 100%;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
-            font-size: 4vw;
-            font-weight: 700;
-            color: white;
-            margin-top: 30%;
-            text-shadow: 0 0 30px #000;
-
-        }
-
-        .counter2 {
-            text-align: center;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            width: 100%;
-            top: 0;
-            text-align: center;
-            font-size: 1vw;
-            color: #222;
-            margin-top: 30%;
-            border: 1px solid #0059CA;
-        }
-
-        #bottom1 {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            color: #555;
-            flex-wrap: wrap;
-            font-size: 0.5vw;
-            text-align: center;
-            justify-content: center;
-            margin-top: 2%;
-        }
-
-        .divider {
-            width: 100%;
-            border: 1px solid #555;
-            margin-top: 0.5%;
-            margin-bottom: 0.5%;
-            border: 2px 2px;
-        }
-
-        .txt1 {
-            flex-wrap: wrap;
-            width: 100%;
-            top: 0;
-            text-align: center;
-            font-size: 1.5vw;
-            font-weight: 600;
-            color: blue;
-            margin-top: 1%;
-        }
-
-        .txt2 {
-            flex-wrap: wrap;
-            width: 100%;
-            top: 0;
-            text-align: center;
-            font-size: 1vw;
-            color: #FF5757;
-            margin-bottom: 1%;
-        }
-
-        .tbq {
-            background-color: #F2FFE3;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            text-align: center;
-
-        }
-
-        tr {
-            width: 100%;
-        }
-
-        th {
-            font-size: 1.1vw;
-            background-color: #ff355e;
-            color: #F2FFE3;
-            padding: 0.2%;
-
-        }
-
-        td {
-            font-size: 1.2vw;
-            background-color: #FFA0A0;
-        }
-
-        .imgqr {
-            width: 300px;
-            height: 300px;
-            text-align: center;
-            padding: 1px;
-        }
-    </style>
 </head>
 
 <body>
@@ -445,80 +35,69 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
             while ($row = mysqli_fetch_assoc($result)) {
             ?>
                 <div class="btnpg1">
-                    <div class="counter">ห้องตรวจ 1</div>
-                    <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                    <div class="counter1"><?php echo $row['q_r1']; ?></div>
-                    <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
+                    <div class="pu1"><label class="counter">ห้องตรวจ 1</label></div>
+                    <div class="pu01"><label class="counter1"><?php echo $row['q_r1']; ?></label></div>
+                    <div class="pu001"><label class="counter2">พญ.อินทรานันท์</label></div>
                 </div>
                 <div class="btnpg2">
-                    <div class="counter">ห้องตรวจ 2</div>
-                    <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                    <div class="counter1"><?php echo $row['q_r2']; ?></div>
-                    <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
+                    <div class="pu2"><label class="counter">ห้องตรวจ 2</label></div>
+                    <div class="pu02"><label class="counter1"><?php echo $row['q_r2']; ?></label></div>
+                    <div class="pu002"><label class="counter2">พญ.อินทรานันท์</label></div>
+
                 </div>
                 <div class="btnpg3">
-                    <div class="counter">ห้องตรวจ 3</div>
-                    <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                    <div class="counter1"><?php echo $row['q_r3']; ?></div>
-                    <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
+                    <div class="pu3"><label class="counter">ห้องตรวจ 3</label></div>
+                    <div class="pu03"><label class="counter1"><?php echo $row['q_r3']; ?></label></div>
+                    <div class="pu003"><label class="counter2">พญ.อินทรานันท์</label></div>
                 </div>
                 <div class="btnpg4">
-                    <div class="counter">ห้องตรวจ 4</div>
-                    <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                    <div class="counter1"><?php echo $row['q_r4']; ?></div>
-                    <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
+                    <div class="pu4"><label class="counter">ห้องตรวจ 4</label></div>
+                    <div class="pu04"><label class="counter1"><?php echo $row['q_r4']; ?></label></div>
+                    <div class="pu004"><label class="counter2">พญ.อินทรานันท์</label></div>
                 </div>
                 <div class="btnpg5">
-                    <div class="counter">ห้องตรวจ 5</div>
-                    <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                    <div class="counter1"><?php echo $row['q_r5']; ?></div>
-                    <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
+                    <div class="pu5"><label class="counter">ห้องตรวจ 5</label></div>
+                    <div class="pu05"><label class="counter1"><?php echo $row['q_r5']; ?></label></div>
+                    <div class="pu005"><label class="counter2">พญ.อินทรานันท์</label></div>
                 </div>
                 <div class="btnpg6">
-                    <div class="counter">ห้องตรวจ 6</div>
-                    <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                    <div class="counter1"><?php echo $row['q_r6']; ?></div>
-                    <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
+                    <div class="pu6"><label class="counter">ห้องตรวจ 6</label></div>
+                    <div class="pu06"><label class="counter1"><?php echo $row['q_r6']; ?></label></div>
+                    <div class="pu006"><label class="counter2">พญ.อินทรานันท์</label></div>
                 </div>
 
-        </div><br>
+        </div><br><br>
 
         <div id="centered">
             <div class="btnpg7">
-                <div class="counter">ห้องตรวจ 7</div>
-                <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="counter1"><?php echo $row['q_r7']; ?></div>
-                <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
+                <div class="pu7"><label class="counter">ห้องตรวจ 7</label></div>
+                <div class="pu07"><label class="counter1"><?php echo $row['q_r7']; ?></label></div>
+                <div class="pu007"><label class="counter2">พญ.อินทรานันท์</label></div>
             </div>
             <div class="btnpg8">
-                <div class="counter">ห้องตรวจ 8</div>
-                <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="counter1"><?php echo $row['q_r8']; ?></div>
-                <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
+                <div class="pu8"><label class="counter">ห้องตรวจ 8</label></div>
+                <div class="pu08"><label class="counter1"><?php echo $row['q_r8']; ?></label></div>
+                <div class="pu008"><label class="counter2">พญ.อินทรานันท์</label></div>
             </div>
             <div class="btnpg9">
-                <div class="counter">ห้องตรวจ 9</div>
-                <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="counter1"><?php echo $row['q_r9']; ?></div>
-                <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
+                <div class="pu9"><label class="counter">ห้องตรวจ 9</label></div>
+                <div class="pu09"><label class="counter1"><?php echo $row['q_r9']; ?></label></div>
+                <div class="pu009"><label class="counter2">พญ.อินทรานันท์</label></div>
             </div>
             <div class="btnpg10">
-                <div class="counter">ห้องตรวจ 10</div>
-                <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="counter1"><?php echo $row['q_r10']; ?></div>
-                <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
+                <div class="pu10"><label class="counter">ห้องตรวจ 10</label></div>
+                <div class="pu010"><label class="counter1"><?php echo $row['q_r10']; ?></label></div>
+                <div class="pu0010"><label class="counter2">พญ.อินทรานันท์</label></div>
             </div>
             <div class="btnpg11">
-                <div class="counter">ห้องตรวจ 11</div>
-                <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="counter1"><?php echo $row['q_r11']; ?></div>
-                <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
+                <div class="pu11"><label class="counter">ห้องตรวจ 11</label></div>
+                <div class="pu011"><label class="counter1"><?php echo $row['q_r11']; ?></label></div>
+                <div class="pu0011"><label class="counter2">พญ.อินทรานันท์</label></div>
             </div>
             <div class="btnpg12">
-                <div class="counter">ห้องตรวจ 12</div>
-                <div style="border: 1px solid #000; width: 100%; align-items: center;"></div>
-                <div class="counter1"><?php echo $row['q_r12']; ?></div>
-                <div class="counter2">เชิญรอหน้าห้องตรวจ</div>
+                <div class="pu12"><label class="counter">ห้องตรวจ 12</label></div>
+                <div class="pu012"><label class="counter1"><?php echo $row['q_r12']; ?></label></div>
+                <div class="pu0012"><label class="counter2">พญ.อินทรานันท์</label></div>
             </div>
 
         </div>
@@ -541,204 +120,3 @@ $chkdate = date("Y-m-d"); // Corrected the date format to YYYY-MM-DD
 </body>
 
 </html>
-<!--<div class="divider"></div>-->
-<!--
-    <div class="txt1">คิวรอผลเเล็ป</div>
-    <div class="txt2">**เมื่อผลเเล็ปออกเเล้ว เลขจะเเสดงคิวที่ผลออก**</div>
-
-    <div>
-        <table border="1" align="center" class="tbq" style="padding-left: 0.5%; padding-right: 0.5%;">
-            <tbody>
-                <thead>
-                    <th>ห้องตรวจ 1</th>
-                    <th>ห้องตรวจ 2</th>
-                    <th>ห้องตรวจ 3</th>
-                    <th>ห้องตรวจ 4</th>
-                    <th>ห้องตรวจ 5</th>
-                    <th>ห้องตรวจ 6</th>
-                    <th>ห้องตรวจ 7</th>
-                    <th>ห้องตรวจ 8</th>
-                    <th>ห้องตรวจ 9</th>
-                    <th>ห้องตรวจ 10</th>
-                    <th>ห้องตรวจ 11</th>
-                    <th>ห้องตรวจ 12</th>
-                    <th>ห้องตรวจ 13</th>
-                    <th>ห้องตรวจ 14</th>
-                    <th>ห้องตรวจ 15</th>
-                </thead>
-                <tr>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                </tr>
-                <tr>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                </tr>
-                <tr>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                </tr>
-                <tr>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                </tr>
-                <tr>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                </tr>
-                <tr>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                </tr>
-                <tr>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                </tr>
-                <tr>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                </tr>
-                <tr>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                </tr>
-                <tr>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                    <td>0000</td>
-                </tr>
-
-
-            </tbody>
-        </table>
-    </div>
-    -->
